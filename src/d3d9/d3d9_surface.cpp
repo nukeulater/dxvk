@@ -121,6 +121,11 @@ namespace dxvk {
 
     D3DLOCKED_BOX lockedBox;
 
+    // zero intialize the memory
+    // because there are games which might access the pLockedRect output
+    // regardless of the API's result
+    std::memset(&lockedBox, 0, sizeof(lockedBox));
+
     HRESULT hr = m_parent->LockImage(
       m_texture,
       m_face, m_mipLevel,

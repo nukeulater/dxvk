@@ -97,6 +97,8 @@ namespace dxvk {
     if (unlikely(pLockedBox == nullptr))
       return D3DERR_INVALIDCALL;
 
+    std::memset(pLockedBox, 0, sizeof(*pLockedBox));
+
     return m_parent->LockImage(
       m_texture,
       m_face, m_mipLevel,
